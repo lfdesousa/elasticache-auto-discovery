@@ -1,0 +1,2 @@
+elasticache-auto-discovery
+===

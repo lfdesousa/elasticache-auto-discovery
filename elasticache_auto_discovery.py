@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+
+import socket
+
+
+def discover(configuration_endpoint):
+    host, port = configuration_endpoint.split(':')
+
+    configs = []
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        sock.connect((host, int(port)))
+        sock.sendall('config get cluster\r\n')
+
+        data = ''
+        while True:
+            buf = sock.recv(1024);
+            data += buf
+            if buf[-5:] == 'END\r\n':
+                break
+
+        lines = data.split('\n')
+
+        # 0: CONFIG cluster 0 134
+        # 1: configversion\r\n
+        # 2: hostname|ip-address|port hostname|ip-address|port ...\r\n
+        # 3:
+        # 4: END
+        # 5: blank
+        configs = [conf.split('|') for conf in lines[2].split(' ')]
+
+        sock.sendall('quit\r\n')
+
+    finally:
+        sock.close()
+
+    return configs
+
+
+if __name__ == '__main__':
+    import sys
+    memcache_servers = discover(sys.argv[1])
+    print memcache_servers
