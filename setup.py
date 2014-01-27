@@ -4,8 +4,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='elasticache-auto-discovery',
-    version='0.0.1',
-    description='Node discovery feature for AWS ElastiCache',
+    version='0.0.2',
+    description='AWS ElastiCache Auto Discovery Client for Python',
     author='Studio Ousia',
     author_email='admin@ousia.jp',
     url='http://github.com/studio-ousia/elasticache-autodiscovery',
@@ -16,7 +16,7 @@ setup(
     classifiers=(
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
-        'Natural Language :: Japanese',
+        'Natural Language :: English',
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.6',
