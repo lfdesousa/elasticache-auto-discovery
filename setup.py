@@ -8,7 +8,7 @@ setup(
     description='AWS ElastiCache Auto Discovery Client for Python',
     author='Studio Ousia',
     author_email='admin@ousia.jp',
-    url='http://github.com/studio-ousia/elasticache-autodiscovery',
+    url='http://github.com/studio-ousia/elasticache-auto-discovery',
     packages=find_packages(),
     license=open('LICENSE').read(),
     include_package_data=True,
