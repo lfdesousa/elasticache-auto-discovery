@@ -8,7 +8,9 @@ def discover(configuration_endpoint, time_to_timeout=None):
 
     configs = []
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.settimeout(time_to_timeout)
+    if time_to_timeout is not None:
+        sock.settimeout(time_to_timeout)
+
     try:
         sock.connect((host, int(port)))
         sock.sendall('config get cluster\r\n')
