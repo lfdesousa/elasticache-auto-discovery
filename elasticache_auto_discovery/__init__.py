@@ -19,7 +19,7 @@ def discover(configuration_endpoint, time_to_timeout=None):
         while True:
             buf = sock.recv(1024);
             data += buf
-            if buf[-5:] == 'END\r\n':
+            if data[-5:] == 'END\r\n':
                 break
 
         lines = data.split('\n')
