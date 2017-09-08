@@ -8,7 +8,7 @@ setup(
     description='AWS ElastiCache Auto Discovery Client for Python',
     author='Studio Ousia',
     author_email='admin@ousia.jp',
-    url='http://github.com/studio-ousia/elasticache-auto-discovery',
+    url='https://github.com/lfdesousa/elasticache-auto-discovery',
     packages=find_packages(),
     license=open('LICENSE').read(),
     include_package_data=True,
@@ -19,8 +19,7 @@ setup(
         'Natural Language :: English',
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.6',
     ),
     tests_require=['nose'],
     test_suite = 'nose.collector'
