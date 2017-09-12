@@ -6,7 +6,6 @@ services:
   - docker
 
 before_script:
-  - docker-compose --version
   - docker-compose up --build -d
 
 # command to install dependencies
@@ -16,6 +15,7 @@ before_script:
 # command to run tests
 script:
   - docker ps
+  - docker inspect elasticache
   - python elasticache_auto_discovery/__init__.py "elasticache:11212"
 
 after_script:
