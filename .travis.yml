@@ -14,6 +14,7 @@ before_script:
 
 # command to run tests
 script:
+  - docker ps
   - python elasticache_auto_discovery/__init__.py "elasticache:11212"
 
 after_script:
