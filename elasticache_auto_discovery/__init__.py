@@ -11,12 +11,12 @@ def discover(configuration_endpoint, time_to_timeout=None):
 
     try:
         sock.connect((host, int(port)))
-        sock.sendall(str.encode('config get cluster\r\n'))
+        sock.sendall(b'config get cluster\r\n')
         data = ''
         while True:
             buf = sock.recv(1024);
-            data += str(buf, 'utf8')
-            if data[-5:] == 'END\r\n':
+            data += buf
+            if data[-5:] == b'END\r\n':
                 break
 
         lines = data.split('\n')
@@ -29,7 +29,7 @@ def discover(configuration_endpoint, time_to_timeout=None):
         # 5: blank
         configs = [conf.split('|') for conf in lines[2].split(' ')]
 
-        sock.sendall(str.encode('quit\r\n'))
+        sock.sendall(b'quit\r\n')
 
     finally:
         sock.close()
