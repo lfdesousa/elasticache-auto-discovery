@@ -12,7 +12,7 @@ def discover(configuration_endpoint, time_to_timeout=None):
     try:
         sock.connect((host, int(port)))
         sock.sendall(b'config get cluster\r\n')
-        data = ''
+        data = b''
         while True:
             buf = sock.recv(1024);
             data += buf
@@ -30,7 +30,6 @@ def discover(configuration_endpoint, time_to_timeout=None):
         configs = [conf.split('|') for conf in lines[2].split(' ')]
 
         sock.sendall(b'quit\r\n')
-
     finally:
         sock.close()
 
