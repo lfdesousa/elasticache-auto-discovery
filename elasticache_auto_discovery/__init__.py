@@ -2,10 +2,8 @@
 
 import socket
 
-
 def discover(configuration_endpoint, time_to_timeout=None):
     host, port = configuration_endpoint.split(':')
-
     configs = []
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     if time_to_timeout is not None:
@@ -13,13 +11,12 @@ def discover(configuration_endpoint, time_to_timeout=None):
 
     try:
         sock.connect((host, int(port)))
-        sock.sendall('config get cluster\r\n')
-
+        sock.sendall(b'config get cluster\r\n')
         data = ''
         while True:
             buf = sock.recv(1024);
             data += buf
-            if data[-5:] == 'END\r\n':
+            if data[-5:] == b'END\r\n':
                 break
 
         lines = data.split('\n')
@@ -32,7 +29,7 @@ def discover(configuration_endpoint, time_to_timeout=None):
         # 5: blank
         configs = [conf.split('|') for conf in lines[2].split(' ')]
 
-        sock.sendall('quit\r\n')
+        sock.sendall(b'quit\r\n')
 
     finally:
         sock.close()
@@ -42,5 +39,6 @@ def discover(configuration_endpoint, time_to_timeout=None):
 
 if __name__ == '__main__':
     import sys
+
     memcache_servers = discover(sys.argv[1])
-    print memcache_servers
+    print(memcache_servers)
