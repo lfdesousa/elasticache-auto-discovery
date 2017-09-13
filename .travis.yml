@@ -16,7 +16,7 @@ before_script:
 script:
   - docker ps
   - docker inspect elasticache
-  - python elasticache_auto_discovery/__init__.py "elasticache:11212"
+  - python elasticache_auto_discovery/__init__.py "localhost:11212"
 
 after_script:
   - docker-compose down
