@@ -14,8 +14,8 @@ before_script:
 
 # command to run tests
 script:
-  - docker ps
-  - docker inspect elasticache
+  #- docker ps
+  #- docker inspect elasticache
   - python elasticache_auto_discovery/__init__.py "localhost:11212"
 
 after_script:
