@@ -16,6 +16,7 @@ before_script:
 script:
   #- docker ps
   #- docker inspect elasticache
+  - sleep 5
   - python elasticache_auto_discovery/__init__.py "localhost:11212"
 
 after_script:
