@@ -1,0 +1,23 @@
+language: python
+python:
+  - "3.6"
+
+services:
+  - docker
+
+before_script:
+  - docker-compose up --build -d
+
+# command to install dependencies
+#install:
+#  - pip install -r requirements.txt
+
+# command to run tests
+script:
+  #- docker ps
+  #- docker inspect elasticache
+  - sleep 5
+  - python elasticache_auto_discovery/__init__.py "localhost:11212"
+
+after_script:
+  - docker-compose down

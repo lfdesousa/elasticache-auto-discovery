@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+  elasticache:
+    image: dazoakley/fake-elasticache
+    ports:
+     - 11212:11212
+    links:
+     - memcached
+    container_name: elasticache
+  memcached:
+    image: memcached:alpine
+    ports:
+     - 11213:11213
+    container_name: memcached
