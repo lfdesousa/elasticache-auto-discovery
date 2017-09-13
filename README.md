@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/lfdesousa/elasticache-auto-discovery.svg?branch=python3.6)](https://travis-ci.org/lfdesousa/elasticache-auto-discovery)
 elasticache-auto-discovery
 ===
 Python client for AWS Elasticache [Auto Discovery Endpoint](http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/AutoDiscovery.html).
